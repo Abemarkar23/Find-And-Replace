@@ -1,0 +1,65 @@
+#!/bin/python3
+import sys
+import os
+import argparse
+from pathlib import Path
+
+
+def parse():
+    parser = argparse.ArgumentParser(description="A User Friendly Way to replace string(s) in a file instead of using sed")
+    parser.add_argument('file', help="path to file in which you want the text replaced", type=str)
+    parser.add_argument('original', help="original text which you want to replace", type=str)
+    parser.add_argument("new", help="new text which will replace the original text", type=str)
+    return parser.parse_args()
+
+
+def confirmation(old, new):
+    localOld = old
+    localNew = new
+    if localOld[:2] == "\n":
+        localOld -= localOld[:2]
+    if localNew[:2] ==  "\n":
+        localNew -= localNew[:2]
+    confirm = input("replace {} with {}(y or n): ".format(localOld, localNew))
+    if confirm != "yes" or confirm != "y":
+        print("aborting...")
+        sys.exit()
+
+
+def check_file(file):
+    if Path(file).is_file():
+        return True
+    raise Exception('Please input a file that exists')
+
+
+def find_pos(text, seek):
+    index = 0
+    for i in range(0, len(text)):
+        if text[i:i+len(seek)] == seek:
+            return index
+        index += 1
+    return -1
+
+
+def replace(seek, new, text):
+    pos = find_pos(text, seek)
+    firstHalf = text[0:pos]
+    secondHalf = text[pos+len(new)-(len(new)-len(seek)):]
+    return firstHalf + new + secondHalf
+
+
+def main():
+    args = parse()
+    if check_file(os.path.abspath(args.file)):
+        newtext = ""
+        with open(args.file, 'r') as file:
+            newtext += replace(args.original, args.new, file.read())
+        with open(args.file, 'w') as file:
+            file.truncate(0)
+            file.write(newtext)
+            file.close()
+    sys.exit()
+
+
+if __name__ == "__main__":
+    main()
