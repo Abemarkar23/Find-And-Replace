@@ -1,6 +1,6 @@
 # Find-And-Replace
 
-simple python script to find and replace the first occurence of a string in a given file. This tool should work for amy linux distribution. Just run the script.py with python with sudo privledges
+simple python command line tool to find and replace the first occurence of a string in a given file. This tool should work for linux and MacOS. It most likely will work for Windows, but you will have to make your own installation script because the current installation script uses ```/usr/bin```. 
 
 #### Requirements 
 
@@ -17,6 +17,7 @@ to install simply run:
 1. ```git clone https://github.com/Abemarkar23/Find-And-Replace```
 1. ```cd Find-And-Replace ```
 1. ```sudo python setup.py``` 
+1. Then you may keep or delete the repository
 
 #### Usage
 ```
