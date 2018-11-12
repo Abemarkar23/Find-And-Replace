@@ -1,6 +1,6 @@
 # Find-And-Replace
 
-simple python command line tool to find and replace the first occurence of a string in a given file. This tool should work for linux and MacOS. It most likely will work for Windows, but you will have to make your own installation script because the current installation script uses ```/usr/bin```. 
+simple python command line tool to find and replace the first occurence of a string in a given file. This tool should work for Linux and MacOS. It most likely will work for Windows, but you will have to make your own installation script because the current installation script uses ```/usr/bin```. 
 
 #### Requirements 
 
