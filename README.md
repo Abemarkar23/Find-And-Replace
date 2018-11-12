@@ -2,7 +2,31 @@
 
 simple python script to find and replace the first occurence of a string in a given file. This tool should work for amy linux distribution. Just run the script.py with python with sudo privledges
 
-MIT License
+#### Requirements 
+
+  - Python
+  - Optional:
+    - Argparse
+    - Pathlib
+
+Note: Optional libraries will be installed during installation
+
+#### Installation
+
+to install simply run: 
+1. ```git clone https://github.com/Abemarkar23/Find-And-Replace```
+1. ```cd Find-And-Replace ```
+1. ```sudo python setup.py``` 
+
+#### Usage
+```
+  far <filename> <text to be replaced> <new text>
+  far hello.txt  Lorem                 Ipsum 
+```
+Note: multiple spaces are not required, they are just in the example for demonstration
+
+
+##### MIT License
 
 Copyright (c) 2018 Arjun Bemarkar
 
